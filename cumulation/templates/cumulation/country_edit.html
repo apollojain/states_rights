@@ -1,0 +1,39 @@
+
+{% extends 'cumulation/base.html' %}
+{% load staticfiles %}
+{% block head %}
+	
+{% endblock %}
+{% block content %}
+
+	{% if form.errors %}
+    <div id="errors" style="color: red;">
+        <h5>The following elements have errors:</h5>
+	    <ol>
+	    {% for error in form.errors %}
+	        <li>{{ error|escape }}</li>
+	    {% endfor %}
+	    </ol>
+    </div>
+	{% endif %}
+    <h2>New Country</h2>
+    <form method="POST" action="{% url 'country_new' %}">
+    	{% csrf_token %}
+        <label for="country_name">Country Name: </label><br/>
+        <input id='country_name' type="text" name="country_name" value="{{current_name}}" style="width: 350px"><br/>
+
+        <label for="capital_city">Capital City: </label><br/>
+        <input id='capital_city' type="text" name="capital_city" value="{{capital_city}}" style="width: 350px"><br/>
+
+        <label for="description">Description: </label><br/>
+        <textarea id="description" name="description" class="materialize-textarea" style="width: 350px;">Describe your country (i.e. history, economy, etc.) here!
+		</textarea>
+
+        <div id="map" style="width: 350px; height: 250px;"></div>
+		<div id="clicked-state"></div>
+		<input type="hidden" id="selected_states" name="selected_states" value="">
+        <button type="submit" class="save btn btn-default">Save</button>
+        
+    </form>
+    <script src="{% static 'js/country_edit.js' %}"></script>
+{% endblock %}

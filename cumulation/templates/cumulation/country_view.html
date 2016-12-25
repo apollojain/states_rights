@@ -1,0 +1,92 @@
+
+{% extends 'cumulation/base.html' %}
+{% load staticfiles %}
+{% block head %}
+	
+{% endblock %}
+{% block content %}
+
+	{% if form.subject.errors %}
+	    <ol>
+	    {% for error in form.subject.errors %}
+	        <li><strong>{{ error|escape }}</strong></li>
+	    {% endfor %}
+	    </ol>
+	{% endif %}
+    <h1>{{country.name }}</h1>
+
+    <div id="map" style="width: 350px; height: 250px;"></div>
+
+    <table>
+        <thead>
+          <tr>
+              <th data-field="id">Category</th>
+              <th data-field="name">Explanation</th>
+              <th data-field="ranking">Ranking</th>
+              <th data-field="similar">Similar Country</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td colspan="3">{{country.name}}</td>
+          </tr>
+          <tr>
+            <td>Capital</td>
+            <td colspan="3">{{country.capital_city}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td colspan="3">{{country.description}}</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td>{{country.total_area}}</td>
+            <td>{{country.total_area_rank}}</td>
+            <td>{{country.total_area_closest}}</td>
+          </tr>
+          <tr>
+            <td>Population</td>
+            <td>{{country.total_population}}</td>
+            <td>{{country.total_population_rank}}</td>
+            <td>{{country.total_population_closest}}</td>
+          </tr>
+          <tr>
+            <td>Population Density</td>
+            <td>{{country.population_density}}</td>
+            <td>{{country.population_density_rank}}</td>
+            <td>{{country.population_density_closest}}</td>
+          </tr>
+          <tr>
+            <td>GDP (USD Millions)</td>
+            <td>{{country.gdp_total}}</td>
+            <td>{{country.gdp_total_rank}}</td>
+            <td>{{country.gdp_total_closest}}</td>
+          </tr>
+          <tr>
+            <td>GDP Per Capita</td>
+            <td>{{country.gdp_per_capita}}</td>
+            <td>{{country.gdp_per_capita_rank}}</td>
+            <td>{{country.gdp_per_capita_closest}}</td>
+          </tr>
+          <tr>
+            <td>Gini Coefficient</td>
+            <td>{{country.gini}}</td>
+            <td>{{country.gini_rank}}</td>
+            <td>{{country.gini_closest}}</td>
+          </tr>
+          <tr>
+            <td>Life Expectancy</td>
+            <td>{{country.life_expectancy}}</td>
+            <td>{{country.life_expectancy_rank}}</td>
+            <td>{{country.life_expectancy_closest}}</td>
+          </tr>
+        </tbody>
+      </table>
+    <script>
+    	var states = "{{ country.component_states }}";
+    	var states_arr = states.split(", ")
+    </script>
+    <script src="{% static 'js/country_view.js' %}"></script>
+{% endblock %}

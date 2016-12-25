@@ -1,0 +1,30 @@
+{% extends 'cumulation/base.html' %}
+{% load staticfiles %}
+{% block head %}
+<style>
+body {
+    background-image: url("{% static 'img/donald.png' %}");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+    background size: 100% 100%;
+    color: white;
+}
+#material{
+	margin-top: 200px;
+}
+.btn-new {
+    background-color: #EF9A9A !important;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="material">
+	<center>
+		<h1> Welcome to States' Rights!</h1>
+		<p> Ever wonder what your state and neighboring states would be like if they formed a new country? Well is this the app for you! States' Rights allows for you to see the various statistics of your new nation in comparison to other counties with regards to land area, GDP, life expectancy, and more!</p>
+		<a href="{% url 'country_new' %}" class="btn btn-new">Create New Country</a>
+        <a href="{% url 'country_list' %}" class="btn">See Proposed Countries</a>
+	</center>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'cumulation/base.html' %}
+{% load staticfiles %}
+{% block head %}
+	
+{% endblock %}
+
+{% block content %}
+  <h2>Country List</h2>
+  <h5>Here is a list of countries that our users created!</h5>
+  {% if countries %}
+
+    <ol>
+      {% for country in countries %}
+        <li><a href="/countries/{{country.id}}/">{{country.name}}</a>: {{country.description}}</li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>There are currently no countries available.</p>
+  {% endif %}
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if countries.has_previous %}
+            <a href="?page={{ countries.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ countries.number }} of {{ countries.paginator.num_pages }}
+        </span>
+
+        {% if countries.has_next %}
+            <a href="?page={{ countries.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+  </div>
+	
+  <script src="{% static 'js/country_view.js' %}"></script>
+{% endblock %}

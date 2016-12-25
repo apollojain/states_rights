@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>States' Rights</title>
+        <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+              
+
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <script src="{% static 'js/jquery-1.7.1.min.js' %}"></script>
+        <script src="{% static 'js/raphael.js' %}"></script>
+        <script src="{% static 'js/jquery.usmap.js' %}"></script>
+        <script src="{% static 'js/jquery-ui-highlights.min.js' %}"></script>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="/" class="brand-logo">&nbsp; States' Rights</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'country_new' %}" class="top-menu">New</a></li>
+              </ul>
+            </div>
+        </nav>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

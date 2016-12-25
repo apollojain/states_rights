@@ -1,1 +1,1 @@
-web: gunicorn states_rights:application
+web: gunicorn states_rights:app

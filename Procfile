@@ -1,1 +1,1 @@
-web: gunicorn states_rights.wsgi --log-file -
+web: gunicorn states_rights:application
